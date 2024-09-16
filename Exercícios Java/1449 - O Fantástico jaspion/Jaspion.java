@@ -6,32 +6,34 @@ class Jaspion {
         int t = sc.nextInt();
         sc.nextLine();
 
-        for (int i = 0; i < t; i++) {
-            int m = sc.nextInt();
-            int n = sc.nextInt();
+        for (int n = 0; n < t; n++) {
+            int M = sc.nextInt();
+            int N = sc.nextInt();
             sc.nextLine();
 
-            String[] palavra = new String[m];
-            String[] traducao = new String[m];
+            String[] palavra = new String[M];
+            String[] traducao_palavra = new String[M];
 
-            for (int j = 0; j < m; j++) {
-                palavra[j] = sc.nextLine();
-                traducao[j] = sc.nextLine();
+            for (int i = 0; i < M; i++) {
+                palavra[i] = sc.nextLine();                    //  ex: i = 0; palavra[i] -> galaxy / traducao_palavra[i] -> cara tossiu
+                traducao_palavra[i] = sc.nextLine();           //      i = 1; palavra[i] -> kagayaku / traducao_palavra[i] -> canalha do
             }
 
-            for (int k = 0; k < n; k++) {
+            for (int i = 0; i < N; i++) {
                 String musica = sc.nextLine();
-                String[] palavra2 = musica.split("\\s+");
-                int tam = palavra2.length;
+                String[] letra_musica = musica.split("\\s+");
 
-                for (int b = 0; b < tam; b++) {
-                    for (int c = 0; c < m; c++) {
-                        if (palavra2[b].equals(palavra[c])) {
-                            palavra2[b] = traducao[c];
+                for (int j = 0; j < letra_musica.length; j++) {
+                    for (int k = 0; k < M; k++) {
+                        if (letra_musica[j].equals(palavra[k])) {
+                            letra_musica[j] = traducao_palavra[k];
                         }
                     }
-                    System.out.printf("%s ", palavra2[b]);
                 }
+                System.out.println(String.join(" ", letra_musica));
+            }
+            
+            if (n < t - 1) {
                 System.out.println();
             }
         }
